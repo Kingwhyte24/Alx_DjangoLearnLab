@@ -1,1 +1,1 @@
-Library project
+First Django project
