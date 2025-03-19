@@ -48,7 +48,7 @@ def user_logout(request):
     return render(request, "relationship_app/logout.html")
 
 
-def is_admin(user):
+def Admin(user):
     return hasattr(user, 'userprofile') and user.userprofile.role == "Admin"
 
 def is_librarian(user):
@@ -57,8 +57,8 @@ def is_librarian(user):
 def is_member(user):
     hasattr(user, 'userprofile') and user.userprofile.role = "Member"
 
-@user_passes_test(is_admin)
-def Admin_view(request):
+@user_passes_test(Admin)
+def Admin(request):
     return render('ADMIN VIEW')
 
 @user_passes_test(is_librarian)
