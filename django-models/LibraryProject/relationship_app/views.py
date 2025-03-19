@@ -30,7 +30,7 @@ def register(request):
         return render(request, "relationship_app/register.html", {"form": form})
 
 
-def login_user(request):
+def user_login(request):
     if request.method == "POST":
         form = AuthenticationForm(request, request.POST)
         if form.is_valid():
