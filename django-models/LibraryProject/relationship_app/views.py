@@ -4,6 +4,7 @@ from .models import Library
 from django.views.generic.detail import DetailView
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth.decorators import user_passes_test
 
 # Create your views here.
 # Function-Based View: List all books
@@ -45,3 +46,25 @@ def user_login(request):
 def user_logout(request):
     logout(request)
     return render(request, "relationship_app/logout.html")
+
+
+def is_admin(user):
+    return hasattr(user, 'userprofile') and user.userprofile.role == "Admin"
+
+def is_librarian(user):
+    hasattr(user, 'userprofile') and user.userprofile.role == "Liberarian"
+
+def is_member(user):
+    hasattr(user, 'userprofile') and user.userprofile.role = "Member"
+
+@user_passes_test(is_admin)
+def admin_view(request):
+    return render('ADMIN VIEW')
+
+@user_passes_test(is_librarian)
+def librarian_view(request):
+    return render('Librarian view')
+
+@user_passes_test(is_member)
+def member_view(request):
+    return render('Member View')
