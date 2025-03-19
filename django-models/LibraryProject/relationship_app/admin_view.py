@@ -6,5 +6,5 @@ def is_admin(user):
 
 @login_required
 @user_passes_test(is_admin)
-def Admin(request):
+def admin_view(request):
     return render(request, "admin_view.html", {"message": "Welcome, Admin!"})
