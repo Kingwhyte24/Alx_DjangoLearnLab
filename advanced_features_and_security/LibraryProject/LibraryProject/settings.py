@@ -128,6 +128,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = "relationship_app.CustomUser"
 AUTH_USER_MODEL = "bookshelf.CustomUser"
 
+# Enforce HTTPS by redirecting all HTTP requests to HTTPS
+SECURE_SSL_REDIRECT = True
+
 # Security headers
 SECURE_BROWSER_XSS_FILTER = True  # Enables XSS protection
 X_FRAME_OPTIONS = "DENY"  # Prevents clickjacking
