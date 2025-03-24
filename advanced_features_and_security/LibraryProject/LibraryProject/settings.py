@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-ph0j4_=xy)c*iv^=cpzb8yvt7f%()w=9n3id2bbo7s*jne4a1b'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -127,3 +127,24 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = "relationship_app.CustomUser"
 AUTH_USER_MODEL = "bookshelf.CustomUser"
+
+# Security headers
+SECURE_BROWSER_XSS_FILTER = True  # Enables XSS protection
+X_FRAME_OPTIONS = "DENY"  # Prevents clickjacking
+SECURE_CONTENT_TYPE_NOSNIFF = True  # Prevents MIME-type sniffing
+
+# CSRF and session security
+CSRF_COOKIE_SECURE = True  # Ensures CSRF cookies are sent over HTTPS
+SESSION_COOKIE_SECURE = True  # Ensures session cookies are sent over HTTPS
+
+# Content Security Policy (CSP) - install django-csp
+INSTALLED_APPS += ["csp"]
+
+CSP_DEFAULT_SRC = ["'self'"]  # Restricts content to the same origin
+CSP_SCRIPT_SRC = ["'self'", "trusted-scripts.com"]  # Allow scripts only from trusted sources
+CSP_STYLE_SRC = ["'self'", "trusted-styles.com"]
+
+# Ensure HSTS is enabled (forces HTTPS)
+SECURE_HSTS_SECONDS = 31536000  # 1 year
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_HSTS_PRELOAD = True
