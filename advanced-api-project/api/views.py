@@ -4,7 +4,7 @@ from rest_framework import permissions, generics, filters
 from .models import Book
 from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAuthenticated
 from rest_framework import generics
-from django_filter import rest_framework
+from django_filters import rest_framework
 from django_filters.rest_framework import DjangoFilterBackend
 # Create your views here.
 
