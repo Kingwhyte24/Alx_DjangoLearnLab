@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}New Post{% endblock %}
+
+{% block content %}
+  <div class="form-container">
+    <h2>Create a New Blog Post</h2>
+
+    <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+
+      <button type="submit">Publish</button>
+    </form>
+
+    <a href="{% url 'posts' %}">Back to Posts</a>
+  </div>
+{% endblock %}
